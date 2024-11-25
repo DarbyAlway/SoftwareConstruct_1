@@ -34,8 +34,6 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-
 
 
 public class SpaceInvaders extends Application {
@@ -67,8 +65,8 @@ public class SpaceInvaders extends Application {
     private boolean moveRight = false;
 
     // 4. Game configuration and settings
-    private final double GAMEWIDTH = 800;
-    private final double GAMEHEIGHT = 600;
+    private final double GAME_WIDTH = 800;
+    private final double GAME_HEIGHT = 600;
 
     // 5. Animation and Timing
     private int frameCounter = 0;
@@ -139,7 +137,7 @@ public class SpaceInvaders extends Application {
     private void showMenu() {
         try {
             Pane menuRoot = new Pane();
-            Scene menuScene = new Scene(menuRoot, GAMEWIDTH, GAMEHEIGHT);
+            Scene menuScene = new Scene(menuRoot, GAME_WIDTH, GAME_HEIGHT);
 
             // Load your background image
             Image backgroundImage = new Image(getClass().getResource("/se233/project2/GAME_BG.jpg").toString());
@@ -147,15 +145,15 @@ public class SpaceInvaders extends Application {
             ImageView backgroundView = new ImageView(backgroundImage);
 
             // Optional: set the size of the ImageView if you want to scale/stretch it
-            backgroundView.setFitWidth(GAMEWIDTH);
-            backgroundView.setFitHeight(GAMEHEIGHT);
+            backgroundView.setFitWidth(GAME_WIDTH);
+            backgroundView.setFitHeight(GAME_HEIGHT);
 
             // Add the background ImageView to the gameRoot pane first
             menuRoot.getChildren().add(backgroundView);
 
             Button startButton = new Button("Start Game");
-            startButton.setLayoutX(GAMEWIDTH / 2 - 50); // roughly center
-            startButton.setLayoutY(GAMEHEIGHT / 2 - 15); // roughly center
+            startButton.setLayoutX(GAME_WIDTH / 2 - 50); // roughly center
+            startButton.setLayoutY(GAME_HEIGHT / 2 - 15); // roughly center
             startButton.setOnAction(event -> startGame());
 
             menuRoot.getChildren().add(startButton);
@@ -178,7 +176,7 @@ public class SpaceInvaders extends Application {
     private void displayGameOver() {
         try {
             Pane gameOverRoot = new Pane();
-            Scene gameOverScene = new Scene(gameOverRoot, GAMEWIDTH, GAMEHEIGHT);
+            Scene gameOverScene = new Scene(gameOverRoot, GAME_WIDTH, GAME_HEIGHT);
 
             // Load your background image
             Image backgroundImage = new Image(getClass().getResource("/se233/project2/Gameover.jpg").toString());
@@ -187,16 +185,16 @@ public class SpaceInvaders extends Application {
             ImageView backgroundView = new ImageView(backgroundImage);
 
             // set the size of the ImageView to scale/stretch it
-            backgroundView.setFitWidth(GAMEWIDTH);
-            backgroundView.setFitHeight(GAMEHEIGHT);
+            backgroundView.setFitWidth(GAME_WIDTH);
+            backgroundView.setFitHeight(GAME_HEIGHT);
 
             // Add the background ImageView to the gameRoot pane first
             gameOverRoot.getChildren().add(backgroundView);
 
             javafx.scene.text.Text gameOverText = new javafx.scene.text.Text("GAME OVER");
             gameOverText.setFont(new Font(50));
-            gameOverText.setX(GAMEWIDTH / 2 - gameOverText.getLayoutBounds().getWidth() / 2);
-            gameOverText.setY(GAMEHEIGHT / 2 - gameOverText.getLayoutBounds().getHeight() / 2);
+            gameOverText.setX(GAME_WIDTH / 2 - gameOverText.getLayoutBounds().getWidth() / 2);
+            gameOverText.setY(GAME_HEIGHT / 2 - gameOverText.getLayoutBounds().getHeight() / 2);
 
             gameOverRoot.getChildren().add(gameOverText);
 
@@ -224,7 +222,7 @@ public class SpaceInvaders extends Application {
     private void endGameScene() {
         try {
             Pane endGameRoot = new Pane();
-            Scene endGameScene = new Scene(endGameRoot, GAMEWIDTH, GAMEHEIGHT);
+            Scene endGameScene = new Scene(endGameRoot, GAME_WIDTH, GAME_HEIGHT);
 
             // Assuming you have a different jpg for the end game scene.
             Image backgroundImage = new Image(getClass().getResource("/se233/project2/EndgameBG.jpg").toString());
@@ -232,8 +230,8 @@ public class SpaceInvaders extends Application {
             ImageView backgroundView = new ImageView(backgroundImage);
 
             // Optional: set the size of the ImageView if you want to scale/stretch it
-            backgroundView.setFitWidth(GAMEWIDTH);
-            backgroundView.setFitHeight(GAMEHEIGHT);
+            backgroundView.setFitWidth(GAME_WIDTH);
+            backgroundView.setFitHeight(GAME_HEIGHT);
 
             // Add the background ImageView to the endGameRoot pane first
             endGameRoot.getChildren().add(backgroundView);
@@ -242,8 +240,8 @@ public class SpaceInvaders extends Application {
             javafx.scene.text.Text endGameText = new javafx.scene.text.Text("CONGRATULATIONS, YOU WON!");
             endGameText.setFont(new Font(50));
             endGameText.setFill(Color.WHITE);
-            endGameText.setX(GAMEWIDTH / 2 - endGameText.getLayoutBounds().getWidth() / 2);
-            endGameText.setY(GAMEHEIGHT / 2 - endGameText.getLayoutBounds().getHeight() / 2);
+            endGameText.setX(GAME_WIDTH / 2 - endGameText.getLayoutBounds().getWidth() / 2);
+            endGameText.setY(GAME_HEIGHT / 2 - endGameText.getLayoutBounds().getHeight() / 2);
 
             endGameRoot.getChildren().add(endGameText);
 
@@ -269,7 +267,7 @@ public class SpaceInvaders extends Application {
 
 
 
-    private void showWarningText1(String message) {
+    private void displayWarningWithFade(String message) {
         try {
             warningText.setText(message);
             warningText.setOpacity(1.0); // Ensure it's fully visible to start with
@@ -292,7 +290,7 @@ public class SpaceInvaders extends Application {
     }
 
 
-    private void showWarningText2(String message) {
+    private void displayWarningWithSlide(String message) {
         try {
             warningText.setText(message);
             warningText.setOpacity(1.0); // Ensure it's fully visible to start with
@@ -402,7 +400,7 @@ public class SpaceInvaders extends Application {
 
     private void startGame() {
         Pane gameRoot = new Pane();
-        Scene gameScene = new Scene(gameRoot, GAMEWIDTH, GAMEHEIGHT);
+        Scene gameScene = new Scene(gameRoot, GAME_WIDTH, GAME_HEIGHT);
 
         // Load your background image
         Image backgroundImage = new Image(getClass().getResource("/se233/project2/GAME_BG.jpg").toString());
@@ -411,13 +409,13 @@ public class SpaceInvaders extends Application {
         ImageView backgroundView = new ImageView(backgroundImage);
 
         // Optional: set the size of the ImageView if you want to scale/stretch it
-        backgroundView.setFitWidth(GAMEWIDTH);
-        backgroundView.setFitHeight(GAMEHEIGHT);
+        backgroundView.setFitWidth(GAME_WIDTH);
+        backgroundView.setFitHeight(GAME_HEIGHT);
 
         // Add the background ImageView to the gameRoot pane first
         gameRoot.getChildren().add(backgroundView);
 
-        playerShip = new PlayerShip(GAMEWIDTH / 2 - 30, GAMEHEIGHT - 40, GAMEHEIGHT);
+        playerShip = new PlayerShip(GAME_WIDTH / 2 - 30, GAME_HEIGHT - 40, GAME_HEIGHT);
         // position player ship at the bottom center
         gameRoot.getChildren().add(playerShip.getSprite());
         initializePlayerLivesDisplay(gameRoot);  // Initialize the heart lives display
@@ -430,8 +428,8 @@ public class SpaceInvaders extends Application {
 
         // Adjust X and Y positions after setting its content (so that we can compute its width and height)
         warningText.textProperty().addListener((observable, oldValue, newValue) -> {
-            warningText.setX(GAMEWIDTH / 2 - warningText.getLayoutBounds().getWidth() / 2);
-            warningText.setY(GAMEHEIGHT / 2 - warningText.getLayoutBounds().getHeight() / 2);
+            warningText.setX(GAME_WIDTH / 2 - warningText.getLayoutBounds().getWidth() / 2);
+            warningText.setY(GAME_HEIGHT / 2 - warningText.getLayoutBounds().getHeight() / 2);
         });
 
         gameRoot.getChildren().add(warningText);
@@ -483,14 +481,14 @@ public class SpaceInvaders extends Application {
 
         // Add Common enemy ships
         for (int i = 0; i < 10; i++) { // example, spawn 10 enemies
-            CommonEnemy enemy = new CommonEnemy(randomXPosition(), randomYPosition(), GAMEWIDTH);
+            CommonEnemy enemy = new CommonEnemy(randomXPosition(), randomYPosition(), GAME_WIDTH);
 
             commonEnemies.add(enemy);
             gameRoot.getChildren().add(enemy.getSprite());
         }
         // Add Uncommon enemy ships
         for (int i = 0; i < 5; i++) { // example, spawn 5 uncommon enemies
-            UncommonEnemy uncommonEnemy = new UncommonEnemy(randomXPosition(), randomYPosition(), GAMEWIDTH);
+            UncommonEnemy uncommonEnemy = new UncommonEnemy(randomXPosition(), randomYPosition(), GAME_WIDTH);
 
             uncommonEnemies.add(uncommonEnemy);
             gameRoot.getChildren().add(uncommonEnemy.getSprite());
@@ -761,7 +759,7 @@ public class SpaceInvaders extends Application {
                         updatePlayerLivesDisplay();
 
                         // Display the warning
-                        showWarningText1("You Losing a Life!");
+                        displayWarningWithFade("You Losing a Life!");
 
                         // Schedule the warning to disappear after a short duration (e.g., 2 seconds)
                         PauseTransition pause = new PauseTransition(Duration.seconds(2));
@@ -853,7 +851,7 @@ public class SpaceInvaders extends Application {
 
                 // After removing the enemies, check if all enemies are eliminated
                 if (commonEnemies.isEmpty() && uncommonEnemies.isEmpty()) {
-                    showWarningText2("All enemies eliminated!");
+                    displayWarningWithFade("All enemies eliminated!");
                     LOGGER.info("All common and uncommon enemies have been eliminated.");
                 }
 
@@ -866,7 +864,7 @@ public class SpaceInvaders extends Application {
             }
 
             private void introduceBoss() {
-                boss = new BossEnemy(GAMEWIDTH / 2 - 50, 10, GAMEWIDTH);  // Spawning boss at top-center
+                boss = new BossEnemy(GAME_WIDTH / 2 - 50, 10, GAME_WIDTH);  // Spawning boss at top-center
                 gameRoot.getChildren().add(boss.getSprite());
                 bossActive = true;
                 LOGGER.info("Boss introduced at top-center of the game field.");
@@ -941,7 +939,7 @@ public class SpaceInvaders extends Application {
 
             private void cleanupOutOfBoundsEnemyBullets() {
                 bossBullets.removeIf(bossBullet -> {
-                    if (bossBullet.getSprite().getY() > GAMEHEIGHT) {
+                    if (bossBullet.getSprite().getY() > GAME_HEIGHT) {
                         gameRoot.getChildren().remove(bossBullet.getSprite());
                         LOGGER.info("Removed out-of-bounds enemy bullet at Y={0}.", bossBullet.getSprite().getY());
                         return true;
@@ -952,7 +950,7 @@ public class SpaceInvaders extends Application {
 
             private void cleanupOutOfBoundsBossBullets() {
                 bossBullets.removeIf(bossBullet -> {
-                    if (bossBullet.getSprite().getY() > GAMEHEIGHT) {
+                    if (bossBullet.getSprite().getY() > GAME_HEIGHT) {
                         gameRoot.getChildren().remove(bossBullet.getSprite());
                         LOGGER.info("Removed out-of-bounds boss bullet at Y={0}.", bossBullet.getSprite().getY());
                         return true;
@@ -969,11 +967,11 @@ public class SpaceInvaders extends Application {
 
     // Utility functions for generating random positions
     private double randomXPosition() {
-        return Math.random() * (GAMEWIDTH - 60);  // adjust as needed
+        return Math.random() * (GAME_WIDTH - 60);  // adjust as needed
     }
 
     private double randomYPosition() {
-        return Math.random() * (GAMEWIDTH / 2);  // only on the top half of the screen
+        return Math.random() * (GAME_WIDTH / 2);  // only on the top half of the screen
     }
 
     // Collision detection functions for CommonEnemy
