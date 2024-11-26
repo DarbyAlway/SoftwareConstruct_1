@@ -34,12 +34,12 @@ public class CommonEnemy extends Enemy  {
 
 
     public void move() {
-        double newX = getX() + direction * moveDistance;
+        double newX = commonEnemyGetX() + direction * moveDistance;
 
         // Check boundaries and change direction if reached the edges
         if (newX < 0 || newX > gameWidth - getSprite().getBoundsInLocal().getWidth()) {
             direction = -direction;
-            newX = getX() + direction * moveDistance;
+            newX = commonEnemyGetX() + direction * moveDistance;
             double newY = getSprite().getY() + VERTICAL_SPEED;
             getSprite().setY(newY);
         }
@@ -52,7 +52,7 @@ public class CommonEnemy extends Enemy  {
 
     // Add a method to shoot
     public EnemyBullet shoot() {
-        EnemyBullet enemyBullet = new EnemyBullet(getX() + sprite.getFitWidth() / 2 - 2.5, getY() + sprite.getFitHeight());
+        EnemyBullet enemyBullet = new EnemyBullet(commonEnemyGetX() + sprite.getFitWidth() / 2 - 2.5, commonEnemyGetY() + sprite.getFitHeight());
         return enemyBullet;
     }
 
@@ -71,11 +71,11 @@ public class CommonEnemy extends Enemy  {
             frameChangeCounter = 0;  // Reset the counter
         }
     }
-    public double getX() {
+    public double commonEnemyGetX() {
         return getSprite().getX();
     }
 
-    public double getY() {
+    public double commonEnemyGetY() {
         return getSprite().getY();
     }
 

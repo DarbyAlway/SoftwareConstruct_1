@@ -38,12 +38,12 @@ public class Bomb {
         this.sprite.setX(x);
         this.sprite.setY(y);
     }
-    public double getX() {
+    public double getBombX() {
         return x ;
         // return the x-coordinate
     }
 
-    public double getY() {
+    public double getBombY() {
         return y ;
         // return the y-coordinate
     }

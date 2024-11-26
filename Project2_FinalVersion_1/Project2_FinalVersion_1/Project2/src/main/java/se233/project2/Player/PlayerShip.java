@@ -100,7 +100,7 @@ public class PlayerShip extends Character {
     public Bomb dropBomb() {
         double shipWidth = sprite.getBoundsInLocal().getWidth();
         double shipHeight = sprite.getBoundsInLocal().getHeight();
-        return new Bomb(x + (shipWidth / 2), y + shipHeight);  // Drops bomb from the center-bottom of the ship
+        return new Bomb(positionX + (shipWidth / 2), positionY + shipHeight);  // Drops bomb from the center-bottom of the ship
     }
 
     public int getScore() {

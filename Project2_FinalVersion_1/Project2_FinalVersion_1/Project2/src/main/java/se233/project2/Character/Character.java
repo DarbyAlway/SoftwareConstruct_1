@@ -6,18 +6,18 @@ public abstract class Character {
 
     // Fields (member variables)
     protected ImageView sprite;
-    protected double x, y;
-    protected static double SPEED = 2.65;
+    protected double positionX, positionY;
+    protected double speed = 2.65;
     protected double gameWidth;
 
     // Constructor
-    public Character(Image image, double x, double y, double gameWidth) {
+    public Character(Image image, double positionX, double positionY, double gameWidth) {
         this.sprite = new ImageView(image);
-        this.x = x;
-        this.y = y;
+        this.positionX = positionX;
+        this.positionY = positionY;
         this.gameWidth = gameWidth;
-        this.sprite.setX(x);
-        this.sprite.setY(y);
+        this.sprite.setX(positionX);
+        this.sprite.setY(positionY);
     }
 
     public Character() {
@@ -31,25 +31,24 @@ public abstract class Character {
 
     // Movement methods
     public void moveLeft() {
-        x -= SPEED;
+        positionX -= speed;
         ensureCharacterIsWithinLeftBoundary();
-        sprite.setX(x);
+        sprite.setX(positionX);
     }
 
     public void moveRight() {
-        x += SPEED;
+        positionX += speed;
         ensureCharacterIsWithinRightBoundary();
-        sprite.setX(x);
+        sprite.setX(positionX);
     }
 
     // Boundary check methods
     protected void ensureCharacterIsWithinLeftBoundary() {
-        if (x < 0) x = 0;
+        if (positionX < 0) positionX = 0;
     }
 
     protected void ensureCharacterIsWithinRightBoundary() {
-        if (x > gameWidth - sprite.getFitWidth()) x = gameWidth - sprite.getFitWidth();
+        if (positionX > gameWidth - sprite.getFitWidth()) positionX = gameWidth - sprite.getFitWidth();
     }
 
 }
-
